@@ -5,27 +5,23 @@ import galleryTemplate from './handlebars/gallery.hbs';
 import refs from './js/references';
 import PixabayApi from './js/apiService';
 
-//fetchImg returns array of images related to it's argument/ we need to put it into object for handlebars and create markup..
+//code to render page
 function createPage(imgs) {
-  const markup = galleryTemplate(imgs);
-  refs.container.innerHTML = markup; //...and then put it into the HTML container
+  refs.container.insertAdjacentHTML('beforeend', galleryTemplate(imgs));
 }
+
+//creating new instance ✨
 const pixabayApi = new PixabayApi();
 
-//all fetchImg stuff should work as a response for submit, so we use it here
-function onSubmit(event) {
+//two function for events
+const onSubmit = function (event) {
   event.preventDefault();
   pixabayApi.searchQuery = event.target.elements.query.value;
   pixabayApi.resetPage();
   pixabayApi.fetchImg().then(imgs => {
     createPage(imgs.hits);
   });
-}
-
-//and adding event listener, eventually
-refs.form.addEventListener('submit', onSubmit);
-
-//======load-more-code======
+};
 
 const onLoadMoreClick = function (event) {
   event.preventDefault();
@@ -34,4 +30,6 @@ const onLoadMoreClick = function (event) {
   });
 };
 
+//and adding event listener,
+refs.form.addEventListener('submit', onSubmit);
 refs.loadMoreButton.addEventListener('click', onLoadMoreClick);
