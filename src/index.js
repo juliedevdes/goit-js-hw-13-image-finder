@@ -5,15 +5,17 @@ import galleryTemplate from './handlebars/gallery.hbs';
 import refs from './js/references';
 import PixabayApi from './js/apiService';
 
-//code to render page
+//render-page code
 function createPage(imgs) {
   refs.container.insertAdjacentHTML('beforeend', galleryTemplate(imgs));
 }
 
+//for load-more btn
 const showLoadMoreBtn = function () {
   refs.loadMoreButton.classList.remove('visually-hidden');
 };
 
+//for scroll
 const scrollToNewImg = function () {
   refs.loadMoreButton.scrollIntoView({
     behavior: 'smooth',
@@ -21,7 +23,7 @@ const scrollToNewImg = function () {
   });
 };
 
-//creating new instance ✨
+//✨ creating new instance ✨
 const pixabayApi = new PixabayApi();
 
 //two function for events
@@ -33,7 +35,7 @@ const onSubmit = function (event) {
   pixabayApi.fetchImg().then(imgs => {
     createPage(imgs.hits);
   });
-  setTimeout(showLoadMoreBtn, 3000);
+  setTimeout(showLoadMoreBtn, 2000);
 };
 
 const onLoadMoreClick = function (event) {
@@ -44,6 +46,6 @@ const onLoadMoreClick = function (event) {
   setTimeout(scrollToNewImg, 500);
 };
 
-//and adding event listeners
+//event listeners, personally 👏
 refs.form.addEventListener('submit', onSubmit);
 refs.loadMoreButton.addEventListener('click', onLoadMoreClick);
