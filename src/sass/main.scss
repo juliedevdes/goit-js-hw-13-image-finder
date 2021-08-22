@@ -1,3 +1,5 @@
+/*== basic styles ==*/
+
 h1,
 h2,
 h3,
@@ -9,7 +11,7 @@ p {
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #9f9fa0;
+  background-color: #e2e0e9;
 }
 ul,
 ol {
@@ -22,6 +24,7 @@ img {
   object-fit: cover;
   border-radius: 4px;
 }
+
 li {
   list-style: none;
   margin-bottom: 20px;
@@ -29,19 +32,6 @@ li {
   border-radius: 4px;
 }
 
-/*=======*/
-.visually-hidden {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px);
-  /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  overflow: hidden;
-}
-/*=======*/
 ul {
   display: flex;
   justify-content: space-around;
@@ -52,7 +42,9 @@ ul {
   padding-left: 15px;
   padding-right: 15px;
 }
-/*====*/
+
+/*== layout styles ==*/
+
 .submit-btn,
 .load-more-bth {
   padding-top: 10px;
@@ -130,4 +122,18 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+/*====class for load-more ===*/
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }
