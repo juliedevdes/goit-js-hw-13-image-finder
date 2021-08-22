@@ -11,7 +11,8 @@ export default class PixabayApi {
       .then(imgs => {
         this.pageNum += 1;
         return imgs;
-      });
+      })
+      .catch(console.log);
   }
 
   resetPage() {
