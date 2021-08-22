@@ -12,11 +12,13 @@ function apiResponseArrayHandler(imgs) {
   refs.container.innerHTML = markup; //...and then put it into the HTML container
 }
 
-//all fetchImg stuff should work as a response for submit btn click, so we use it here
-function onSubmitBtnClick(event) {
+//all fetchImg stuff should work as a response for submit, so we use it here
+function onSubmit(event) {
   event.preventDefault();
-  fetchImgs(refs.input.value).then(apiResponseArrayHandler);
+  fetchImgs(event.target.elements.query.value)
+    .then(apiResponseArrayHandler)
+    .catch(err => console.log(err));
 }
 
 //and adding event listener, eventually
-refs.button.addEventListener('click', onSubmitBtnClick);
+refs.form.addEventListener('submit', onSubmit);
