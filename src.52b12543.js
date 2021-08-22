@@ -11,6 +11,6 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{}],"eQwa":[function(require,module,exports) {
 "use strict";function e(e){return fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${e}&page=номер_страницы&per_page=12&key=23034166-be8967e0ea66b0703121f1d79`).then(e=>(404===e.status&&console.log("Error"),e.json()))}Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=e;
 },{}],"Focm":[function(require,module,exports) {
-"use strict";require("./sass/main.scss");var e=r(require("./handlebars/gallery.hbs")),t=r(require("./js/references")),n=r(require("./js/apiService"));function r(e){return e&&e.__esModule?e:{default:e}}function u(e){e.preventDefault(),(0,n.default)(t.default.input.value).then(i)}function i(n){const r={imgs:n.hits},u=(0,e.default)(r);t.default.container.innerHTML=u}t.default.button.addEventListener("click",u);
+"use strict";require("./sass/main.scss");var e=r(require("./handlebars/gallery.hbs")),t=r(require("./js/references")),n=r(require("./js/apiService"));function r(e){return e&&e.__esModule?e:{default:e}}function u(n){const r={imgs:n.hits},u=(0,e.default)(r);t.default.container.innerHTML=u}function i(e){e.preventDefault(),(0,n.default)(t.default.input.value).then(u)}t.default.button.addEventListener("click",i);
 },{"./sass/main.scss":"clu1","./handlebars/gallery.hbs":"Dbro","./js/references":"oY80","./js/apiService":"eQwa"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-13-image-finder/src.a9887c6b.js.map
+//# sourceMappingURL=/goit-js-hw-13-image-finder/src.52b12543.js.map
