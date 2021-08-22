@@ -10,6 +10,17 @@ function createPage(imgs) {
   refs.container.insertAdjacentHTML('beforeend', galleryTemplate(imgs));
 }
 
+const showLoadMoreBtn = function () {
+  refs.loadMoreButton.classList.remove('visually-hidden');
+};
+
+const scrollToNewImg = function () {
+  refs.loadMoreButton.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+  });
+};
+
 //creating new instance ✨
 const pixabayApi = new PixabayApi();
 
@@ -18,9 +29,11 @@ const onSubmit = function (event) {
   event.preventDefault();
   pixabayApi.searchQuery = event.target.elements.query.value;
   pixabayApi.resetPage();
+  refs.container.innerHTML = '';
   pixabayApi.fetchImg().then(imgs => {
     createPage(imgs.hits);
   });
+  setTimeout(showLoadMoreBtn, 3000);
 };
 
 const onLoadMoreClick = function (event) {
@@ -28,8 +41,9 @@ const onLoadMoreClick = function (event) {
   pixabayApi.fetchImg().then(imgs => {
     createPage(imgs.hits);
   });
+  setTimeout(scrollToNewImg, 500);
 };
 
-//and adding event listener,
+//and adding event listeners
 refs.form.addEventListener('submit', onSubmit);
 refs.loadMoreButton.addEventListener('click', onLoadMoreClick);
